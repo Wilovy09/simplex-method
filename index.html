@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metodo Simplex</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-content">
+      <h1>Metodo Simplex</h1>
+      <p>Visualizador interactivo paso a paso</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Problem Statement -->
+    <section class="card problem-card">
+      <div class="card-header">
+        <h2>Problema de Programacion Lineal</h2>
+        <button class="btn-secondary" id="toggle-editor">Editar problema</button>
+      </div>
+      <div id="problem-display" class="problem-display"></div>
+
+      <div id="problem-editor" class="problem-editor hidden">
+        <div class="editor-row">
+          <label>
+            Variables de decision:
+            <input type="number" id="n-vars" value="2" min="1" max="6" class="small-input">
+          </label>
+          <label>
+            Restricciones:
+            <input type="number" id="n-constraints" value="3" min="1" max="8" class="small-input">
+          </label>
+          <button class="btn-secondary" id="update-size">Actualizar tabla</button>
+        </div>
+
+        <div class="editor-section">
+          <strong>Funcion objetivo &mdash; Maximizar Z =</strong>
+          <div id="obj-inputs" class="coeff-row"></div>
+        </div>
+
+        <div class="editor-section">
+          <strong>Restricciones (&le;):</strong>
+          <div id="constraint-inputs"></div>
+        </div>
+
+        <button class="btn-primary" id="apply-problem">Aplicar problema</button>
+      </div>
+    </section>
+
+    <!-- Solve Button -->
+    <div class="solve-bar">
+      <button class="btn-solve" id="solve-btn">Resolver paso a paso</button>
+    </div>
+
+    <!-- Steps Visualization -->
+    <section class="card steps-card" id="steps-section" style="display:none">
+
+      <!-- Navigation -->
+      <div class="step-nav">
+        <button class="nav-btn" id="prev-btn" disabled>&#8592; Anterior</button>
+        <div class="step-indicator">
+          <span id="step-label">Paso 1</span>
+          <div class="step-dots" id="step-dots"></div>
+        </div>
+        <button class="nav-btn" id="next-btn">Siguiente &#8594;</button>
+      </div>
+
+      <!-- Legend -->
+      <div class="legend">
+        <span class="legend-item entering">Variable entrante</span>
+        <span class="legend-item leaving">Variable saliente</span>
+        <span class="legend-item pivot">Elemento pivote</span>
+        <span class="legend-item min-ratio">Razon minima</span>
+        <span class="legend-hint">Teclas &#8592; &#8594; para navegar</span>
+      </div>
+
+      <!-- Explanation Box -->
+      <div id="explanation-box"></div>
+
+      <!-- Tableau -->
+      <div class="tableau-wrapper">
+        <div id="tableau-container"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
