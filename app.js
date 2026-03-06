@@ -622,4 +622,17 @@ document.addEventListener('DOMContentLoaded', () => {
     steps = [];
     currentStep = 0;
   });
+
+  // ---- MODAL ----
+  const modal    = document.getElementById('help-modal');
+  const helpBtn  = document.getElementById('help-btn');
+  const closeBtn = document.getElementById('modal-close');
+
+  function openModal()  { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function closeModal() { modal.style.display = 'none';  document.body.style.overflow = '';       }
+
+  helpBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 });

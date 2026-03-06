@@ -8,11 +8,90 @@
 </head>
 <body>
 
+  <!-- MODAL DE AYUDA -->
+  <div id="help-modal" class="modal-overlay" style="display:none" aria-modal="true" role="dialog">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>Como usar el visualizador</h2>
+        <button class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <div class="modal-section">
+          <h3>1. Problema por defecto</h3>
+          <p>Al abrir la app ya hay un problema cargado. Solo presiona <strong>"Resolver paso a paso"</strong> para verlo resuelto.</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>2. Ingresar tu propio problema</h3>
+          <ol>
+            <li>Presiona <strong>"Editar problema"</strong></li>
+            <li>Cambia el numero de <strong>variables</strong> y <strong>restricciones</strong></li>
+            <li>Presiona <strong>"Actualizar tabla"</strong> si cambiaste las cantidades</li>
+            <li>Escribe los coeficientes de la <strong>funcion objetivo</strong></li>
+            <li>Escribe los coeficientes de cada <strong>restriccion</strong> y el valor del lado derecho</li>
+            <li>Presiona <strong>"Aplicar problema"</strong></li>
+            <li>Presiona <strong>"Resolver paso a paso"</strong></li>
+          </ol>
+          <p class="modal-note">Solo soporta restricciones del tipo &le; (maximizacion en forma estandar).</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>3. Ejemplo &mdash; Problema del cuaderno</h3>
+          <div class="modal-problem">
+            <div class="modal-problem-obj">Maximizar Z = 3x&#8321; + 2x&#8322;</div>
+            <div class="modal-problem-sa">sujeto a:</div>
+            <div class="modal-problem-constraints">
+              <span>2x&#8321; +&nbsp; x&#8322; &le; 18</span>
+              <span>2x&#8321; + 3x&#8322; &le; 42</span>
+              <span>3x&#8321; +&nbsp; x&#8322; &le; 24</span>
+            </div>
+          </div>
+          <table class="modal-table">
+            <thead>
+              <tr><th>Campo</th><th>Valor</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Variables</td><td><code>2</code></td></tr>
+              <tr><td>Restricciones</td><td><code>3</code></td></tr>
+              <tr><td>Obj: x&#8321; &nbsp; x&#8322;</td><td><code>3</code> &nbsp; <code>2</code></td></tr>
+              <tr><td>R1: coef &middot; coef &middot; &le;</td><td><code>2</code> &middot; <code>1</code> &middot; <code>18</code></td></tr>
+              <tr><td>R2: coef &middot; coef &middot; &le;</td><td><code>2</code> &middot; <code>3</code> &middot; <code>42</code></td></tr>
+              <tr><td>R3: coef &middot; coef &middot; &le;</td><td><code>3</code> &middot; <code>1</code> &middot; <code>24</code></td></tr>
+            </tbody>
+          </table>
+          <p class="modal-result">Solucion optima: x&#8321; = 8, x&#8322; = 2, <strong>Z = 28</strong></p>
+        </div>
+
+        <div class="modal-section">
+          <h3>4. Navegar los pasos</h3>
+          <div class="modal-keys">
+            <div class="modal-key-row"><kbd>&larr;</kbd><kbd>&rarr;</kbd> <span>Teclas del teclado</span></div>
+            <div class="modal-key-row"><span class="key-btn">Anterior / Siguiente</span> <span>Botones en pantalla</span></div>
+            <div class="modal-key-row"><span class="key-dot"></span> <span>Click en los puntos para saltar a cualquier paso</span></div>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>5. Codigo de colores</h3>
+          <div class="modal-colors">
+            <span class="modal-color entering">Variable entrante</span>
+            <span class="modal-color leaving">Variable saliente</span>
+            <span class="modal-color pivot">Elemento pivote</span>
+            <span class="modal-color min-ratio">Razon minima</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="header-content">
       <h1>Metodo Simplex</h1>
       <p>Visualizador interactivo paso a paso</p>
     </div>
+    <button class="help-btn" id="help-btn" aria-label="Ayuda">?</button>
   </header>
 
   <main class="container">
